@@ -27,6 +27,9 @@ pkgs.mkShell {
     # OCaml
     ocaml
     opam
+    
+    # JavaScript (Node.js)
+    nodejs
   ];
 
   shellHook = ''
@@ -37,5 +40,6 @@ pkgs.mkShell {
     echo "  - C++: $(g++ --version | head -n1)"
     echo "  - Python: $(python3 --version)"
     echo "  - OCaml: $(ocaml -version)"
+    echo "  - Node.js: $(node --version)"
   '';
 }

@@ -45,9 +45,9 @@ fn run_command(cmd string, iterations int) !BenchResult {
 fn verify_consistency(all_commands []string, extra_args string) bool {
 	println('\nVerifying consistency across implementations...\n')
 	
-	// Normalize output by removing formatting characters
+	// Normalize output by removing all formatting characters
 	normalize := fn (s string) string {
-		return s.replace('[', '').replace(']', '').replace(',', '').replace('  ', ' ').trim_space()
+		return s.replace(' ', '').replace(',', '').replace('[', '').replace(']', '').trim_space()
 	}
 	
 	// Test with -p flag (pre-print unsorted array)
@@ -179,10 +179,12 @@ fn main() {
 		eprintln('Failed to compile in_place.ml')
 	}
 	
-	// Commands to run (Python is interpreted, others are compiled binaries)
+	// Commands to run (Python and JavaScript are interpreted, others are compiled binaries)
 	mut all_commands := [
 		'python3 immutable.py${extra_args}',
 		'python3 in_place.py${extra_args}',
+		'node immutable.js${extra_args}',
+		'node in_place.js${extra_args}',
 	]
 	
 	if cpp_immutable_build.exit_code == 0 {
