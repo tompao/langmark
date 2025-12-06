@@ -3,7 +3,7 @@
 pkgs.mkShell {
   buildInputs = with pkgs; [
     git
-    
+
     # Go
     go
     gopls
@@ -23,6 +23,10 @@ pkgs.mkShell {
     python3
     python311Packages.pip
     python311Packages.virtualenv
+    
+    # OCaml
+    ocaml
+    opam
   ];
 
   shellHook = ''
@@ -32,5 +36,6 @@ pkgs.mkShell {
     echo "  - V: $(v version)"
     echo "  - C++: $(g++ --version | head -n1)"
     echo "  - Python: $(python3 --version)"
+    echo "  - OCaml: $(ocaml -version)"
   '';
 }

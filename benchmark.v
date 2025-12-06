@@ -167,6 +167,18 @@ fn main() {
 		eprintln('Failed to compile in_place.v')
 	}
 	
+	// Build OCaml programs
+	println('Compiling OCaml...')
+	ocaml_immutable_build := os.execute('ocamlopt -o build/immutable_ml immutable.ml && mv immutable.cmi immutable.cmx immutable.o build/ 2>/dev/null || true')
+	ocaml_inplace_build := os.execute('ocamlopt -o build/in_place_ml in_place.ml && mv in_place.cmi in_place.cmx in_place.o build/ 2>/dev/null || true')
+	
+	if ocaml_immutable_build.exit_code != 0 {
+		eprintln('Failed to compile immutable.ml')
+	}
+	if ocaml_inplace_build.exit_code != 0 {
+		eprintln('Failed to compile in_place.ml')
+	}
+	
 	// Commands to run (Python is interpreted, others are compiled binaries)
 	mut all_commands := [
 		'python3 immutable.py${extra_args}',
@@ -190,6 +202,12 @@ fn main() {
 	}
 	if v_inplace_build.exit_code == 0 {
 		all_commands << './build/in_place_v${extra_args}'
+	}
+	if ocaml_immutable_build.exit_code == 0 {
+		all_commands << './build/immutable_ml${extra_args}'
+	}
+	if ocaml_inplace_build.exit_code == 0 {
+		all_commands << './build/in_place_ml${extra_args}'
 	}
 	
 	// Verify all implementations produce the same output
