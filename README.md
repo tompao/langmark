@@ -1,6 +1,6 @@
-# Quicksort Benchmark Suite
+# LangMark
 
-A multi-language quicksort benchmark comparing functional (immutable) and imperative (in-place) implementations across different programming languages.
+A multi-language set of microbenchmarks comparing functional (immutable) and imperative (in-place) implementations across different programming languages.
 
 ## Languages
 

@@ -78,7 +78,7 @@ fn verify_consistency(all_commands []string, extra_args string) bool {
 		return false
 	}
 	
-	// Test default output (first 10 elements)
+	// Test with -v flag (full sorted output)
 	println('\nTesting sorted output (-v flag):')
 	reference_output = ''
 	all_match = true
