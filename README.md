@@ -1,6 +1,6 @@
 # LangMark
 
-A multi-language set of microbenchmarks comparing functional (immutable) and imperative (in-place) implementations across different programming languages.
+A set of micro-benchmarks comparing functional (immutable) and imperative (in-place) implementations across different programming languages.
 
 ## Languages
 
