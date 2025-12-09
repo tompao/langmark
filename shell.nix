@@ -28,6 +28,12 @@ pkgs.mkShell {
     ocaml
     opam
     
+    # Rust
+    rustc
+    cargo
+    rustfmt
+    clippy
+    
     # JavaScript (Node.js)
     nodejs
   ];
@@ -40,6 +46,7 @@ pkgs.mkShell {
     echo "  - C++: $(g++ --version | head -n1)"
     echo "  - Python: $(python3 --version)"
     echo "  - OCaml: $(ocaml -version)"
+    echo "  - Rust: $(rustc --version)"
     echo "  - Node.js: $(node --version)"
   '';
 }

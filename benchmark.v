@@ -175,6 +175,18 @@ fn main() {
 		eprintln('Failed to compile in_place.ml')
 	}
 	
+	// Build Rust programs
+	println('Compiling Rust...')
+	rust_immutable_build := os.execute('rustc -C opt-level=3 -C target-cpu=native -o build/immutable_rust immutable.rs')
+	rust_inplace_build := os.execute('rustc -C opt-level=3 -C target-cpu=native -o build/in_place_rust in_place.rs')
+	
+	if rust_immutable_build.exit_code != 0 {
+		eprintln('Failed to compile immutable.rs')
+	}
+	if rust_inplace_build.exit_code != 0 {
+		eprintln('Failed to compile in_place.rs')
+	}
+	
 	// Commands to run (Python and JavaScript are interpreted, others are compiled binaries)
 	mut all_commands := [
 		'python3 immutable.py',
@@ -206,6 +218,12 @@ fn main() {
 	}
 	if ocaml_inplace_build.exit_code == 0 {
 		all_commands << './build/in_place_ml'
+	}
+	if rust_immutable_build.exit_code == 0 {
+		all_commands << './build/immutable_rust'
+	}
+	if rust_inplace_build.exit_code == 0 {
+		all_commands << './build/in_place_rust'
 	}
 	
 	// Verify all implementations produce the same output
