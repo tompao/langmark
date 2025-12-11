@@ -1,4 +1,4 @@
-# LangMark
+# [Langs FYI](https://langs.fyi) - Performance
 
 A set of micro-benchmarks comparing functional (immutable) and imperative (in-place) implementations across different programming languages.
 

@@ -1,4 +1,4 @@
-# LangMark Implementation Guide
+# Benchmarks Implementation Guide
 
 This document describes the two quicksort implementation variants used in this benchmark suite to help maintain consistency when adding new languages.
 
